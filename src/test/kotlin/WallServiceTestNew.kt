@@ -34,7 +34,7 @@ class WallServiceTestNew {
         )
 
         service.add(original)
-        assertEquals(4, service.posts.last().id)
+        assertEquals(1, service.posts.last().id)
     }
 
     @Test
