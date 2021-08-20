@@ -1,7 +1,7 @@
-object WallService {
+class WallService {
     var posts = emptyArray<Post>()
 
-    private var postId = 0
+    var postId = 1
 
     fun add(post: Post): Post {
         posts += post.copy(id = postId)
@@ -33,6 +33,8 @@ object WallService {
                     donut = post.donut,
                     postponedId = post.postponedId
                 )
+                result = true
+                break
             } else {
                 result = false
             }
