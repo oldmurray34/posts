@@ -10,35 +10,12 @@ class WallService {
     }
 
     fun update(post: Post): Boolean {
-        var result = true
-        for (savedPost in posts) {
-            if (post.id == savedPost.id) {
-                posts[posts.indexOf(savedPost)] = savedPost.copy(
-                    ownerId = post.ownerId,
-                    text = post.text,
-                    friendOnly = post.friendOnly,
-                    comments = post.comments,
-                    copyright = post.copyright,
-                    likes = post.likes,
-                    reposts = post.reposts,
-                    views = post.views,
-                    postType = post.postType,
-                    signerId = post.signerId,
-                    canPin = post.canPin,
-                    canDelete = post.canDelete,
-                    canEdit = post.canEdit,
-                    isPinned = post.isPinned,
-                    markedAsAd = post.markedAsAd,
-                    isFavourite = post.isFavourite,
-                    donut = post.donut,
-                    postponedId = post.postponedId
-                )
-                result = true
-                break
-            } else {
-                result = false
+        for ((index, postInArray) in posts.withIndex()) {
+            if (post.id == postInArray.id) {
+                posts[index] = post.copy(ownerId = postInArray.ownerId, date = postInArray.date)
+                return true
             }
         }
-        return result
+        return false
     }
 }

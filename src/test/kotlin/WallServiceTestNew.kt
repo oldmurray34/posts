@@ -7,7 +7,7 @@ class WallServiceTestNew {
     fun add() {
         val service = WallService()
         val original = Post(
-            2,
+            200,
             2,
             1,
             1,
@@ -33,8 +33,10 @@ class WallServiceTestNew {
             postponedId = 1
         )
 
+        val expected = original.copy(id=1)
+
         service.add(original)
-        assertEquals(1, service.posts.last().id)
+        assertEquals(expected, service.posts.last())
     }
 
     @Test
