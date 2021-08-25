@@ -1,3 +1,5 @@
+import attachment.Attachment
+
 data class Post(
     val id: Int,
     val ownerId: Int,
@@ -22,7 +24,8 @@ data class Post(
     val markedAsAd: Boolean = false,
     val isFavourite: Boolean = false,
     val donut: Any?,
-    val postponedId: Int
+    val postponedId: Int,
+    val attachments: Array<Attachment>?
     )
 
 
