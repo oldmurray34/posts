@@ -1,4 +1,4 @@
 package attachment
 
-class ArticleAttachment(type: Article) : Attachment(type) {
+class ArticleAttachment(override val type: String = "article", val article: Article) : Attachment {
 }

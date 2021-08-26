@@ -1,4 +1,4 @@
 package attachment
 
-class MusicAttachment(type: Music) : Attachment(type) {
+class MusicAttachment(override val type: String = "music", val music: Music) : Attachment {
 }

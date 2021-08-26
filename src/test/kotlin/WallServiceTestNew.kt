@@ -8,7 +8,7 @@ class WallServiceTestNew {
     fun add() {
         val service = WallService()
         val video = Video(1, 1, 1, 1)
-        val videoAttachment = VideoAttachment(video)
+        val videoAttachment = VideoAttachment(video = video)
         val attachments : Array<Attachment> = arrayOf(videoAttachment)
         val original = Post(
             200,
@@ -132,7 +132,7 @@ class WallServiceTestNew {
         ))
 
         val video = Video(1, 1, 1, 1)
-        val videoAttachment = VideoAttachment(video)
+        val videoAttachment = VideoAttachment(video = video)
         val attachments : Array<Attachment> = arrayOf(videoAttachment)
 
         val newPost = Post(2,

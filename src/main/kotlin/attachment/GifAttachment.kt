@@ -1,4 +1,4 @@
 package attachment
 
-class GifAttachment(type: Gif) : Attachment(type) {
+class GifAttachment(override val type: String = "gif", val gif: Gif) : Attachment {
 }
