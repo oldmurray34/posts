@@ -20,7 +20,7 @@ class WallServiceTestNew {
             1,
             1,
             false,
-            1,
+            comments = emptyArray(),
             1,
             1,
             100,
@@ -57,7 +57,7 @@ class WallServiceTestNew {
             1,
             1,
             false,
-            1,
+            comments = emptyArray(),
             1,
             1,
             100,
@@ -85,7 +85,7 @@ class WallServiceTestNew {
             1,
             1,
             false,
-            1,
+            comments = emptyArray(),
             1,
             1,
             100,
@@ -113,7 +113,7 @@ class WallServiceTestNew {
             1,
             1,
             false,
-            1,
+            comments = emptyArray(),
             1,
             1,
             100,
@@ -144,7 +144,7 @@ class WallServiceTestNew {
             1,
             1,
             false,
-            1,
+            comments = emptyArray(),
             1,
             1,
             100,
@@ -178,7 +178,7 @@ class WallServiceTestNew {
             1,
             1,
             false,
-            1,
+            comments = emptyArray(),
             1,
             1,
             100,
@@ -206,7 +206,7 @@ class WallServiceTestNew {
             1,
             1,
             false,
-            1,
+            comments = emptyArray(),
             1,
             1,
             100,
@@ -234,7 +234,7 @@ class WallServiceTestNew {
             1,
             1,
             false,
-            1,
+            comments = emptyArray(),
             1,
             1,
             100,
@@ -261,7 +261,7 @@ class WallServiceTestNew {
             1,
             1,
             false,
-            1,
+            comments = emptyArray(),
             1,
             1,
             100,
@@ -280,5 +280,98 @@ class WallServiceTestNew {
 
         val result = service.update(newPost)
         assertFalse(result)
+    }
+
+    @Test
+    fun commentNoException() {
+        val service = WallService()
+        service.add(Post(
+            1,
+            1,
+            1,
+            1,
+            1,
+            "Тест",
+            1,
+            1,
+            false,
+            comments = emptyArray(),
+            1,
+            1,
+            100,
+            1000,
+            "Тест текст",
+            1,
+            canPin = false,
+            canDelete = false,
+            canEdit = false,
+            isPinned = false,
+            markedAsAd = false,
+            isFavourite = false,
+            donut = 1,
+            postponedId = 1,
+            null
+        ))
+
+        val comment = Comment(
+            1,
+            1,
+            1,
+            1,
+            "Тест",
+            1,
+            1,
+            1,
+            null,
+            1
+        )
+        val result = service.createComment(comment)
+        assertTrue(result)
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun commentThrowException() {
+        val service = WallService()
+        service.add(Post(
+            1,
+            1,
+            1,
+            1,
+            1,
+            "Тест",
+            1,
+            1,
+            false,
+            comments = emptyArray(),
+            1,
+            1,
+            100,
+            1000,
+            "Тест текст",
+            1,
+            canPin = false,
+            canDelete = false,
+            canEdit = false,
+            isPinned = false,
+            markedAsAd = false,
+            isFavourite = false,
+            donut = 1,
+            postponedId = 1,
+            null
+        ))
+
+        val comment = Comment(
+            1,
+            2,
+            1,
+            1,
+            "Тест",
+            1,
+            1,
+            1,
+            null,
+            1
+        )
+        service.createComment(comment)
     }
 }

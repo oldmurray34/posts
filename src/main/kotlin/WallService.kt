@@ -1,3 +1,5 @@
+class PostNotFoundException(message: String): RuntimeException(message)
+
 class WallService {
     var posts = emptyArray<Post>()
 
@@ -15,6 +17,17 @@ class WallService {
                 posts[index] = post.copy(ownerId = postInArray.ownerId, date = postInArray.date)
                 return true
             }
+        }
+        return false
+    }
+
+    fun createComment(comment: Comment): Boolean {
+        for ((index, postInArray) in posts.withIndex()) {
+            if (comment.postId == postInArray.id) {
+                val newComments = postInArray.comments + comment
+                posts[index] = postInArray.copy(comments = newComments)
+                return true
+            } else throw PostNotFoundException("No post with id ${comment.postId}")
         }
         return false
     }

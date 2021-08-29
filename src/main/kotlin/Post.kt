@@ -10,7 +10,7 @@ data class Post(
     val replyOwnerId: Int,
     val replyPostId: Int,
     val friendOnly: Boolean = true,
-    val comments: Any?,
+    val comments: Array<Comment> = emptyArray(),
     val copyright: Any?,
     val likes: Int = 0,
     val reposts: Int = 0,
@@ -25,7 +25,7 @@ data class Post(
     val isFavourite: Boolean = false,
     val donut: Any?,
     val postponedId: Int,
-    val attachments: Array<Attachment>?
+    val attachments: Array<Attachment>?,
     )
 
 
