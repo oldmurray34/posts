@@ -1,3 +1,4 @@
+import attachment.*
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -6,6 +7,9 @@ class WallServiceTestNew {
     @Test
     fun add() {
         val service = WallService()
+        val video = Video(1, 1, 1, 1)
+        val videoAttachment = VideoAttachment(video = video)
+        val attachments : Array<Attachment> = arrayOf(videoAttachment)
         val original = Post(
             200,
             2,
@@ -30,7 +34,8 @@ class WallServiceTestNew {
             markedAsAd = false,
             isFavourite = false,
             donut = 1,
-            postponedId = 1
+            postponedId = 1,
+            attachments
         )
 
         val expected = original.copy(id=1)
@@ -66,7 +71,8 @@ class WallServiceTestNew {
             markedAsAd = false,
             isFavourite = false,
             donut = 1,
-            postponedId = 1
+            postponedId = 1,
+            null
         ))
 
         service.add(Post(
@@ -93,7 +99,8 @@ class WallServiceTestNew {
             markedAsAd = false,
             isFavourite = false,
             donut = 1,
-            postponedId = 1
+            postponedId = 1,
+            null
         ))
 
         service.add(Post(
@@ -120,8 +127,13 @@ class WallServiceTestNew {
             markedAsAd = false,
             isFavourite = false,
             donut = 1,
-            postponedId = 1
+            postponedId = 1,
+            null
         ))
+
+        val video = Video(1, 1, 1, 1)
+        val videoAttachment = VideoAttachment(video = video)
+        val attachments : Array<Attachment> = arrayOf(videoAttachment)
 
         val newPost = Post(2,
             1234,
@@ -146,7 +158,8 @@ class WallServiceTestNew {
             markedAsAd = false,
             isFavourite = false,
             donut = 1,
-            postponedId = 1)
+            postponedId = 1,
+            attachments)
 
         val result = service.update(newPost)
         assertTrue(result)
@@ -179,7 +192,8 @@ class WallServiceTestNew {
             markedAsAd = false,
             isFavourite = false,
             donut = 1,
-            postponedId = 1
+            postponedId = 1,
+            null
         ))
 
         service.add(Post(
@@ -206,7 +220,8 @@ class WallServiceTestNew {
             markedAsAd = false,
             isFavourite = false,
             donut = 1,
-            postponedId = 1
+            postponedId = 1,
+            null
         ))
 
         service.add(Post(
@@ -233,7 +248,8 @@ class WallServiceTestNew {
             markedAsAd = false,
             isFavourite = false,
             donut = 1,
-            postponedId = 1
+            postponedId = 1,
+            null
         ))
 
         val newPost = Post(20,
@@ -259,7 +275,8 @@ class WallServiceTestNew {
             markedAsAd = false,
             isFavourite = false,
             donut = 1,
-            postponedId = 1)
+            postponedId = 1,
+            null)
 
         val result = service.update(newPost)
         assertFalse(result)
