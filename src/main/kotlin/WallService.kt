@@ -27,8 +27,8 @@ class WallService {
                 val newComments = postInArray.comments + comment
                 posts[index] = postInArray.copy(comments = newComments)
                 return true
-            } else throw PostNotFoundException("No post with id ${comment.postId}")
+            }
         }
-        return false
+        throw PostNotFoundException("No post with id ${comment.postId}")
     }
 }
